@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Tin Tức Audio</string>
+    <string name="tabaudio">Audio</string>
+    <string name="tabread">Đọc</string>
+    <string name="tabvideo">Video</string>
+</resources>
