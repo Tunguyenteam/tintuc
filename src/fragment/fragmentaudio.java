@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Timer;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -16,9 +17,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import service.mediaservice;
-
-import android.content.Intent;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -28,7 +26,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -37,11 +34,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.tin.MainActivity;
 import com.example.tin.R;
-import com.example.tin.activitydoc;
 
 public class fragmentaudio extends Fragment {
 	LinearLayout layoutcontrol;
@@ -52,18 +47,25 @@ public class fragmentaudio extends Fragment {
 	String[] arlinkmp3, artitle;
 	int arg2;
 	int index;
-	ArrayList<String> arrlinkmp3 = new ArrayList<String>();
-	ArrayList<String> arrtitle = new ArrayList<String>();
+	Timer timer = new Timer();
+	ArrayList<HashMap<String, String>> arrlvaudio = new ArrayList<HashMap<String, String>>();
+	public static ArrayList<String> arrlinkmp3 = new ArrayList<String>();
+	public static ArrayList<String> arrtitle = new ArrayList<String>();
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_layoutaudio, container,
 				false);
-		String linkjsonaudio = MainActivity.linkjsonaudio;
-		new redjson().execute(linkjsonaudio);
 		lvaudio = (ListView) view.findViewById(R.id.listViewtabaudio);
-
+		String icon = "icon", title = "title";
+		String from[] = { icon, title };
+		int to[] = { R.id.iconlvfragment, R.id.titlelvfragment };
+		adtlvaudio = new SimpleAdapter(getActivity(),
+				arrlvaudio, R.layout.costumlvfragment, from, to);
+		final String linkjsonaudio = MainActivity.linkjsonaudio;
+		new redjson().execute(linkjsonaudio);
+	
 		lvaudio.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -194,12 +196,7 @@ public class fragmentaudio extends Fragment {
 	}
 
 	class redjson extends AsyncTask<String, Integer, String> {
-		String icon = "icon", title = "title";
-		String from[] = { icon, title };
-		int to[] = { R.id.iconlvfragment, R.id.titlelvfragment };
-		ArrayList<HashMap<String, String>> arrlvaudio = new ArrayList<HashMap<String, String>>();
-		public SimpleAdapter adtlvaudio = new SimpleAdapter(getActivity(),
-				arrlvaudio, R.layout.costumlvfragment, from, to);
+		
 
 		@Override
 		protected String doInBackground(String... params) {
@@ -218,7 +215,7 @@ public class fragmentaudio extends Fragment {
 					JSONObject son = arrroot.getJSONObject(i);
 					HashMap<String, String> hm = new HashMap<String, String>();
 					hm.put("icon", String.valueOf(R.drawable.headphone));
-					hm.put(title, son.getString("title"));
+					hm.put("title", son.getString("title"));
 					arrlinkmp3.add(son.getString("link"));
 					arrtitle.add(son.getString("title"));
 					arrlvaudio.add(hm);

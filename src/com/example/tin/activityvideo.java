@@ -1,6 +1,7 @@
 package com.example.tin;
 
 
+import fragment.fragmentvideo;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -9,17 +10,18 @@ import android.media.MediaPlayer.OnPreparedListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.WindowManager;
 
+import android.widget.ListView;
 import android.widget.MediaController;
-import android.widget.TextView;
 import android.widget.VideoView;
 
 public class activityvideo extends Activity{
 	MainActivity mainActivity = new MainActivity();
+	fragmentvideo fragmentvideo = new fragmentvideo();
 	public String titlevvideo;
 	ProgressDialog progressDialog;
 	VideoView videoView;
+	ListView lvvideo;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class activityvideo extends Activity{
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		Intent intentvideo = getIntent();
 		getActionBar().setTitle(intentvideo.getStringExtra("title"));
+		lvvideo = (ListView)findViewById(R.id.listViewvideo);
+		lvvideo.setAdapter(fragmentvideo.adtlvvideo);
 		videoView = (VideoView)findViewById(R.id.videoView1);
 		progressDialog = new ProgressDialog(activityvideo.this);
 		progressDialog.setMessage(intentvideo.getStringExtra("title"));

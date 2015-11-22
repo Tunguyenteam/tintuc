@@ -51,29 +51,30 @@ public final class R {
         public static final int video=0x7f020019;
     }
     public static final class id {
-        public static final int action_settings=0x7f080017;
-        public static final int buttonback=0x7f08000f;
-        public static final int buttonnext=0x7f080011;
-        public static final int buttonplaypause=0x7f080010;
+        public static final int action_settings=0x7f080018;
+        public static final int buttonback=0x7f080010;
+        public static final int buttonnext=0x7f080012;
+        public static final int buttonplaypause=0x7f080011;
         public static final int contentdoc=0x7f080002;
         public static final int drawermenu=0x7f080003;
-        public static final int iconlvfragment=0x7f080006;
-        public static final int imageViewiconmenu=0x7f080008;
-        public static final int layoutcontrol=0x7f08000d;
-        public static final int layouttab=0x7f080012;
-        public static final int listViewtabaudio=0x7f08000a;
-        public static final int listViewtabread=0x7f08000b;
-        public static final int listViewtabvideo=0x7f08000c;
+        public static final int iconlvfragment=0x7f080007;
+        public static final int imageViewiconmenu=0x7f080009;
+        public static final int layoutcontrol=0x7f08000e;
+        public static final int layouttab=0x7f080013;
+        public static final int listViewtabaudio=0x7f08000b;
+        public static final int listViewtabread=0x7f08000c;
+        public static final int listViewtabvideo=0x7f08000d;
+        public static final int listViewvideo=0x7f080006;
         public static final int lvdrawermenu=0x7f080004;
-        public static final int pager=0x7f080016;
+        public static final int pager=0x7f080017;
         public static final int scrollView1=0x7f080001;
-        public static final int textViewaudio=0x7f080013;
-        public static final int textViewlvmenu=0x7f080009;
-        public static final int textViewread=0x7f080014;
-        public static final int textViewtitletin=0x7f08000e;
-        public static final int textViewvideo=0x7f080015;
+        public static final int textViewaudio=0x7f080014;
+        public static final int textViewlvmenu=0x7f08000a;
+        public static final int textViewread=0x7f080015;
+        public static final int textViewtitletin=0x7f08000f;
+        public static final int textViewvideo=0x7f080016;
         public static final int titledoc=0x7f080000;
-        public static final int titlelvfragment=0x7f080007;
+        public static final int titlelvfragment=0x7f080008;
         public static final int videoView1=0x7f080005;
     }
     public static final class layout {

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import service.mediaservice;
+import service.updateservice;
 
 import android.R.color;
 import android.content.Intent;
@@ -51,6 +52,8 @@ public class MainActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		Intent intent = new Intent(MainActivity.this,updateservice.class);
+		startService(intent);
 		playpause = (ImageView)findViewById(R.id.buttonplaypause);
 		back = (ImageView)findViewById(R.id.buttonback);
 		next = (ImageView)findViewById(R.id.buttonnext);

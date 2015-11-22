@@ -42,7 +42,7 @@ import com.example.tin.activityvideo;
 
 public class fragmentvideo extends Fragment{
 	public ListView lvvideo;
-	public ListAdapter adtlvread;
+	public ListAdapter adtlvvideo;
 	String[] arlinkvideo, artitlevideo;
 	activitydoc activitydoc = new activitydoc();
 	String urlvideo, getlinkvideo,gettitlevideo;
