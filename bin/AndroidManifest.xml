@@ -36,7 +36,7 @@
             android:name="com.example.tin.activityvideo"
             android:theme="@android:style/Theme.Holo.Light" >
         </activity>
-        <service android:name="service.mediaservice"></service>
+        <service android:name="service.updateservice"></service>
     </application>
 
 </manifest>
