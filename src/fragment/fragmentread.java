@@ -32,9 +32,9 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 
-import com.example.tin.MainActivity;
 import com.example.tin.R;
-import com.example.tin.activitydoc;
+import com.tunguyen.tintin.MainActivity;
+import com.tunguyen.tintin.ActivityDoc;
 
 
 
@@ -44,9 +44,10 @@ public class fragmentread extends Fragment{
 	String urlread, getcontentread,gettitleread;
 	public ListAdapter adtlvread;
 	String[] arcontent, artitle;
-	activitydoc activitydoc = new activitydoc();
-	ArrayList<String> arrcontentread = new ArrayList<String>();
-	ArrayList<String> arrtitleread = new ArrayList<String>();
+	ActivityDoc activitydoc = new ActivityDoc();
+	
+	public static ArrayList<String> arrtitleread = new ArrayList<String>();
+	public static ArrayList<String> arrcontentread = new ArrayList<String>();
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -72,7 +73,7 @@ public class fragmentread extends Fragment{
 
 				}
 				
-				Intent intentread = new Intent(getActivity(),activitydoc.class);
+				Intent intentread = new Intent(getActivity(),ActivityDoc.class);
 				intentread.putExtra("title", gettitleread);
 				intentread.putExtra("content", getcontentread);
 				startActivity(intentread);
