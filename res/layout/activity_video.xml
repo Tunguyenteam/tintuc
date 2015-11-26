@@ -4,15 +4,30 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
         <VideoView
             android:id="@+id/videoView1"
             android:layout_width="match_parent"
-            android:layout_height="240dp" />
-
-        <ListView
-            android:id="@+id/listViewvideo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-        </ListView>
+            android:layout_height="240dp"
+            android:padding="10dp" />
+    </LinearLayout>
+<LinearLayout
+    android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+    <ListView
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:id="@+id/listViewvideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp" >
+    </ListView>
+    </LinearLayout>
 
 </LinearLayout>
