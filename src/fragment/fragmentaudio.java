@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Timer;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -34,9 +33,10 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.tin.MainActivity;
 import com.example.tin.R;
+import com.tunguyen.tintin.MainActivity;
 
 public class fragmentaudio extends Fragment {
 	LinearLayout layoutcontrol;
@@ -47,25 +47,26 @@ public class fragmentaudio extends Fragment {
 	String[] arlinkmp3, artitle;
 	int arg2;
 	int index;
-	Timer timer = new Timer();
-	ArrayList<HashMap<String, String>> arrlvaudio = new ArrayList<HashMap<String, String>>();
+	public static ArrayList<HashMap<String, String>> arrlvaudio = new ArrayList<HashMap<String, String>>();
 	public static ArrayList<String> arrlinkmp3 = new ArrayList<String>();
-	public static ArrayList<String> arrtitle = new ArrayList<String>();
+	public static ArrayList<String> arrtitleaudio = new ArrayList<String>();
+	public static ArrayList<String> arrsize = new ArrayList<String>();
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_layoutaudio, container,
 				false);
+		
 		lvaudio = (ListView) view.findViewById(R.id.listViewtabaudio);
 		String icon = "icon", title = "title";
 		String from[] = { icon, title };
 		int to[] = { R.id.iconlvfragment, R.id.titlelvfragment };
 		adtlvaudio = new SimpleAdapter(getActivity(),
 				arrlvaudio, R.layout.costumlvfragment, from, to);
-		final String linkjsonaudio = MainActivity.linkjsonaudio;
+		String linkjsonaudio = MainActivity.linkjsonaudio;
 		new redjson().execute(linkjsonaudio);
-	
+		
 		lvaudio.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -79,7 +80,7 @@ public class fragmentaudio extends Fragment {
 					getlinkmp3 = arlinkmp3[i];
 
 				}
-				artitle = arrtitle.get(arg2).toString().split("\t");
+				artitle = arrtitleaudio.get(arg2).toString().split("\t");
 				for (int i = 0; i < artitle.length; i++) {
 					gettitleaudio = artitle[i];
 
@@ -106,7 +107,7 @@ public class fragmentaudio extends Fragment {
 					for (int i = 0; i < arlinkmp3.length; i++) {
 						getlinkmp3 = arlinkmp3[i];
 					}
-					artitle = arrtitle.get(index).toString().split("\t");
+					artitle = arrtitleaudio.get(index).toString().split("\t");
 					for (int i = 0; i < artitle.length; i++) {
 						gettitleaudio = artitle[i];
 					}
@@ -129,7 +130,7 @@ public class fragmentaudio extends Fragment {
 					for (int i = 0; i < arlinkmp3.length; i++) {
 						getlinkmp3 = arlinkmp3[i];
 					}
-					artitle = arrtitle.get(index).toString().split("\t");
+					artitle = arrtitleaudio.get(index).toString().split("\t");
 					for (int i = 0; i < artitle.length; i++) {
 						gettitleaudio = artitle[i];
 					}
@@ -207,8 +208,9 @@ public class fragmentaudio extends Fragment {
 		@Override
 		protected void onPostExecute(String result) {
 			try {
+				arrlvaudio.clear();
 				arrlinkmp3.clear();
-				arrtitle.clear();
+				arrtitleaudio.clear();
 				JSONObject root = new JSONObject(result);
 				JSONArray arrroot = root.getJSONArray("tinmoi");
 				for (int i = 0; i < arrroot.length(); i++) {
@@ -217,11 +219,12 @@ public class fragmentaudio extends Fragment {
 					hm.put("icon", String.valueOf(R.drawable.headphone));
 					hm.put("title", son.getString("title"));
 					arrlinkmp3.add(son.getString("link"));
-					arrtitle.add(son.getString("title"));
+					arrtitleaudio.add(son.getString("title"));
 					arrlvaudio.add(hm);
 					lvaudio.setAdapter(adtlvaudio);
-
+					
 				}
+				
 
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
