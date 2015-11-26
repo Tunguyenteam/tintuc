@@ -1,10 +1,8 @@
 package fragment;
-
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -15,9 +13,7 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -28,27 +24,21 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
-
-import com.example.tin.MainActivity;
 import com.example.tin.R;
-import com.example.tin.activitydoc;
-import com.example.tin.activityvideo;
-
-
-
-
-
+import com.tunguyen.tintin.MainActivity;
+import com.tunguyen.tintin.ActivityDoc;
+import com.tunguyen.tintin.activityvideo;
 public class fragmentvideo extends Fragment{
 	public ListView lvvideo;
 	public ListAdapter adtlvvideo;
 	String[] arlinkvideo, artitlevideo;
-	activitydoc activitydoc = new activitydoc();
+	ActivityDoc activitydoc = new ActivityDoc();
 	String urlvideo, getlinkvideo,gettitlevideo;
 	fragmentaudio fragmentaudio = new fragmentaudio();
-	ArrayList<String> arrlinkvideo = new ArrayList<String>();
-	ArrayList<String> arrtitlevideo = new ArrayList<String>();
+	
+	public static ArrayList<String> arrtitlevideo = new ArrayList<String>();
+	public static ArrayList<String> arrlinkvideo = new ArrayList<String>();
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -61,8 +51,6 @@ public class fragmentvideo extends Fragment{
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				TextView tv = (TextView)arg1.findViewById(R.id.titlelvfragment);
-				tv.setTextColor(Color.RED);
 				arlinkvideo = arrlinkvideo.get(arg2).toString().split("\t");
 				for (int i = 0; i < arlinkvideo.length; i++) {
 					getlinkvideo= arlinkvideo[i];
